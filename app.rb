@@ -18,5 +18,5 @@ get '/' do
 		cat[:data] = generate_cat_attributes_hash(cat)
 		cat
 	end
-	haml :index
+	erb :index
 end

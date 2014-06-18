@@ -1,0 +1,69 @@
+<h1>
+  <%= @cats.length %>
+  Cats with Cash
+</h1>
+<br/>
+<div class="col-md-2">
+  <h3>
+    Filter
+  </h3>
+  <div class="filters">
+    <div class="button btn btn-default" id="clear_filter">
+      Clear Filters
+    </div>
+    <div class="button btn btn-default" id="legacy_filter">
+      Legacy Donor
+    </div>
+    <div class="button btn btn-default" id="kittens_filter">
+      Has Kittens
+    </div>
+    <div class="button btn btn-default" id="largeDonor_filter">
+      Large Donors
+    </div>
+    <div class="button btn btn-default" id="notDonated_filter">
+      Have not donated
+    </div>
+  </div>
+  <h3>
+    Sort
+  </h3>
+  <div class="sorts">
+    <div class="button btn btn-default" id="clear_sort">
+      Clear Sort
+    </div>
+    <div class="button btn btn-default" id="netWorth_sort">
+      Net Worth
+    </div>
+    <div class="button btn btn-default" id="donations_sort">
+      Donations
+    </div>
+  </div>
+</div>
+<div class="col-md-10">
+  <div class="cards">
+    <% @cats.each do |cat| %>
+      <div class="card">
+        <img class="cat" height="<%= cat[:height] %>" src="<%= cat[:img] %>"/>
+        <p class="name">
+          <%= cat[:name] %>
+        </p>
+        <p class="stats">
+          Donations
+          $
+          <%= separate_comma(cat[:donations]) %>
+          <br/>
+          Net Worth
+          $
+          <%= separate_comma(cat[:networth]) %>
+        </p>
+        <p class="actions">
+          <div class="button btn btn-default glyphicon glyphicon-plane" id="order_tickets"></div>
+          <div class="button btn btn-default glyphicon glyphicon-phone-alt" id="call_them"></div>
+          <div class="button btn btn-default glyphicon glyphicon-gift" id="send_gift"></div>
+          <div class="button btn btn-default glyphicon glyphicon-send" id="send_email"></div>
+          <div class="button btn btn-default glyphicon glyphicon-cutlery"></div>
+        </p>
+      </div>
+    <% end %>
+  </div>
+</div>
