@@ -1,0 +1,50 @@
+%h1 
+	= @cats.length
+	Cats with Cash
+%br
+%br
+.col-md-2
+	%h3
+		Filter
+	.filters
+		.button.btn.btn-default#clear_filter
+			Clear Filters
+		.button.btn.btn-default#legacy_filter
+			Legacy Donor
+		.button.btn.btn-default#kittens_filter
+			Has Kittens
+		.button.btn.btn-default#largeDonor_filter
+			Large Donors
+		.button.btn.btn-default#notDonated_filter
+			Have not donated
+	%h3
+		Sort
+	.sorts
+		.button.btn.btn-default#clear_sort
+			Clear Sort
+		.button.btn.btn-default#netWorth_sort
+			Net Worth
+		.button.btn.btn-default#donations_sort
+			Donations
+
+.col-md-10
+	.cards
+		- @cats.each do |cat|
+			.card{ cat[:data] }
+				%img.cat{src:cat[:img] ,height: cat[:height]}
+				%p.name
+					= cat[:name]
+				%p.stats<
+					Donations
+					$
+					= separate_comma(cat[:donations])
+					%br
+					Net Worth
+					$
+					= separate_comma(cat[:networth])
+				%p.actions
+					.button.btn.btn-default.glyphicon.glyphicon-plane#order_tickets
+					.button.btn.btn-default.glyphicon.glyphicon-phone-alt#call_them
+					.button.btn.btn-default.glyphicon.glyphicon-gift#send_gift
+					.button.btn.btn-default.glyphicon.glyphicon-send#send_email
+					.button.btn.btn-default.glyphicon.glyphicon-cutlery

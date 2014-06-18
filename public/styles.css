@@ -1,0 +1,59 @@
+.cards{
+	background-color: #E9E9E9 !important;
+	text-align: center;
+}
+.cards:after {
+	content: '';
+	display: block;
+	clear: both;
+}
+.card {
+	/*display: inline-block;*/
+	float: left;
+	position: relative;
+	width: 236px;
+	text-align: center;
+	margin: 14px 7px 0 7px;
+	border-radius: 3px;
+	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.18);
+	background: #fff;
+	font-size: 11px;
+}
+.card .stats, .card .networth{
+	padding: 6px 14px 7px;
+	text-align: left;
+}
+.card .name{
+	color: white;
+	background: rgba(0,0,0,.8);
+	position: absolute;
+	top: 0px;
+	font-size: 13px;
+	right:0px;
+	padding-left:2px;
+	padding-right: 2px;
+	/*margin-left: 4px;*/
+	/*padding: 7px 9px 7px 7px;*/
+}
+.card img.cat{
+	margin:0 auto;
+	width: 236px;
+	border-radius: 3px 3px 0 0;
+	display: block;
+	padding: 0;
+	position: relative;
+	background: #a1a3a9;
+	vertical-align: middle;
+	border: 0;
+}
+.card p.info{
+	text-align: left;
+	padding: 6px 14px 7px;
+	margin: 5px 0;
+	-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+color: #333;
+font-size: 13px;
+line-height: 17px;
+word-wrap: break-word;
+}

@@ -1,0 +1,17 @@
+!!! 5
+%html
+	%head
+		%title Cats with cash
+		%link{ href:"/styles.css", :rel=>"stylesheet" }
+		%link{href:"//maxcdn.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css", :media => "screen", :rel => "stylesheet" }
+	%body
+		.container
+			= yield
+			%footer
+				%small 
+				All images from 
+				%a{href:"cashcats.biz"}
+				Cash Cats
+		%script{ src: "//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js" }
+		%script{ src: "//cdnjs.cloudflare.com/ajax/libs/jquery.isotope/1.5.25/jquery.isotope.min.js"}
+		%script{ src: "/isotope.js" }
