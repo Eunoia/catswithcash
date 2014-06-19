@@ -59,6 +59,12 @@ function onlyOneButtonGlows(button){
 	$button.parent().find(".btn-primary").removeClass("btn-primary")
 	$button.addClass("btn-primary");
 }
+
+function supriseCat(){
+	var $cat = $('<div data-donations="342" data-networth="28530237" data-legacy="yes" id="donor76" class="card no_kittens"><img class="cat" height="176" src="tumblr_n0wtj2VEbD1qgn992o1_500.jpg"><p class="name">Jean</p><p class="stats"><span class="hidden">yes</span>Donations $ 342<br>Net Worth $ 28,530,237</p><p class="actions"></p><div class="btn btn-default glyphicon glyphicon-plane" onclick="order_tickets76()" id="order_tickets"><script>function order_tickets76(){alert("Your airplane to visit Jean is pulling up shortly")}</script><div class="hidden">76</div></div><div class="btn btn-default glyphicon glyphicon-phone-alt" onclick="call_them76()" id="call_them"><script>function call_them76(){alert("Pick up your phone, Jean is calling.")}</script><div class="hidden">76</div></div><div class="btn btn-default glyphicon glyphicon-gift send_gift" id="send_gift76"><div class="hidden">Jean</div></div><div class="btn btn-default glyphicon glyphicon-send" onclick="send_email76()" id="send_email"><script>function send_email76(){alert("Your perfectly worded email will be read by Jean shortly.")}</script></div><div class="btn btn-default glyphicon glyphicon-cutlery buy_lunch" onclick="buy_lunch76()" id="buy_lunch"><script>function buy_lunch76(){$.ajax({url: "/work",type: "POST",data: { action: "buy_lunch", donor: "76" },async: false,success: function(response){alert(response)}})}</script><div class="hidden">76</div></div><p></p></div>')
+	$cat.appendTo($container)
+	$container.isotope('appended',$cat)
+}
 $container = $(".cards")
 $container.isotope({
 	itemSelector: '.card',
@@ -116,3 +122,4 @@ $("#donations_sort").click(function(){
 	onlyOneButtonGlows(this)
 	$container.isotope({ sortBy : 'donations',sortAscending: false });
 })
+
