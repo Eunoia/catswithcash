@@ -60,7 +60,7 @@
           <%= cat[:name] %>
         </p>
         <p class="stats">
-          <div class="hidden" class="legacy<% puts cat[:donorID] %>">yes</div>
+          <span class="hidden" class="legacy<% puts cat[:donorID] %>">yes</span>
           Donations
           $
           <%= separate_comma(cat[:donations]) %>
@@ -89,15 +89,9 @@
             </script>
             <div class="hidden"><%=cat[:donorID] %></div>
           </div>
-          <div  class="btn btn-default glyphicon glyphicon-gift"
-                onclick="send_gift<%=cat[:donorID] %>()"
-                id="send_gift">
-            <script>
-              function send_gift<%=cat[:donorID] %>(){
-                alert("<%= cat[:name] %> will appreciate the thoughtful gift you sent.")
-              }
-            </script>
-            <div class="hidden"><%=cat[:donorID] %></div>
+          <div  class="btn btn-default glyphicon glyphicon-gift send_gift"
+                id="send_gift<%=cat[:donorID] %>">
+            <div class="hidden"><%=cat[:name] %></div>
           </div>
           <div  class="btn btn-default glyphicon glyphicon-send"
                 onclick="send_email<%=cat[:donorID] %>()"
