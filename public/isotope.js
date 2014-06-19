@@ -109,6 +109,7 @@ $("#clear_sort").click(function(){
 })
 $("#netWorth_sort").click(function(){
 	$(".sorts .btn-primary").removeClass("btn-primary")
+	$container.isotope({ sortBy : 'networth', sortAscending: false });
 	onlyOneButtonGlows(this)
 })
 $("#donations_sort").click(function(){

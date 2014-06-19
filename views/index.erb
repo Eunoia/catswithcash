@@ -42,12 +42,25 @@
 <div class="col-md-10">
   <div class="cards">
     <% @cats.each do |cat| %>
-      <div class="card">
+      <div
+          data-donations="<%= cat[:donations] %>"
+          data-networth="<%= cat[:networth] %>"
+          data-legacy="<%= if cat[:legacy]
+                             "yes"
+                             else "no"
+                            end %>"
+          id="donor<%=cat[:donarID]%>"
+          class=" card <%= if cat[:kittens]
+                       "has_kittens"
+                    else  "no_kittens"
+                    end%>"
+        >
         <img class="cat" height="<%= cat[:height] %>" src="<%= cat[:img] %>"/>
         <p class="name">
           <%= cat[:name] %>
         </p>
         <p class="stats">
+          <div class="hidden" class="legacy<% puts cat[:donarID] %>">yes</div>
           Donations
           $
           <%= separate_comma(cat[:donations]) %>
@@ -57,11 +70,61 @@
           <%= separate_comma(cat[:networth]) %>
         </p>
         <p class="actions">
-          <div class="button btn btn-default glyphicon glyphicon-plane" id="order_tickets"></div>
-          <div class="button btn btn-default glyphicon glyphicon-phone-alt" id="call_them"></div>
-          <div class="button btn btn-default glyphicon glyphicon-gift" id="send_gift"></div>
-          <div class="button btn btn-default glyphicon glyphicon-send" id="send_email"></div>
-          <div class="button btn btn-default glyphicon glyphicon-cutlery"></div>
+          <div class="btn btn-default glyphicon glyphicon-plane"
+            onclick="order_tickets<%=cat[:donarID] %>()" id="order_tickets">
+            <script>
+              function order_tickets<%=cat[:donarID] %>(){
+                alert("Your airplane to visit <%= cat[:name] %> is pulling up shortly")
+              }
+            </script>
+            <div class="hidden"><%=cat[:donarID] %></div>
+          </div>
+          <div  class="btn btn-default glyphicon glyphicon-phone-alt"
+                onclick="call_them<%=cat[:donarID] %>()"
+                id="call_them">
+            <script>
+              function call_them<%=cat[:donarID] %>(){
+                alert("Pick up your phone, <%= cat[:name] %> is calling.")
+              }
+            </script>
+            <div class="hidden"><%=cat[:donarID] %></div>
+          </div>
+          <div  class="btn btn-default glyphicon glyphicon-gift"
+                onclick="send_gift<%=cat[:donarID] %>()"
+                id="send_gift">
+            <script>
+              function send_gift<%=cat[:donarID] %>(){
+                alert("<%= cat[:name] %> will appreciate the thoughtful gift you sent.")
+              }
+            </script>
+            <div class="hidden"><%=cat[:donarID] %></div>
+          </div>
+          <div  class="btn btn-default glyphicon glyphicon-send"
+                onclick="send_email<%=cat[:donarID] %>()"
+                id="send_email">
+            <script>
+              function send_email<%=cat[:donarID] %>(){
+                alert("Your perfectly worded email will be read by <%= cat[:name] %> shortly.")
+              }
+            </script>
+          </div>
+          <div  class="btn btn-default glyphicon glyphicon-cutlery buy_lunch"
+                onclick="buy_lunch<%=cat[:donarID] %>()" id="buy_lunch">
+            <script>
+              function buy_lunch<%=cat[:donarID] %>(){
+                $.ajax({
+                  url: "/work",
+                  type: "POST",
+                  data: { action: "buy_lunch", donor: "<%=cat[:donarID] %>" },
+                  async: false,
+                  success: function(response){
+                    alert(response)
+                  }
+                })
+              }
+            </script>
+            <div class="hidden"><%=cat[:donarID] %></div>
+          </div>
         </p>
       </div>
     <% end %>
