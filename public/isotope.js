@@ -65,12 +65,11 @@ function supriseCat(){
 	$cat.appendTo($container)
 	$container.isotope('appended',$cat)
 }
-$container = $(".cards")
+$container = $("#cards")
 $container.isotope({
 	itemSelector: '.card',
 	layoutMode: 'masonry',
 	animationEngine: 'jquery',
-	// transitionDuration: '1s',
 	getSortData: {
 		netWorth: function(itemElem){
 			return parseFloat(itemElem.data("networth"));

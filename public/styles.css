@@ -1,8 +1,8 @@
-.cards{
+#cards{
 	background-color: #E9E9E9 !important;
 	text-align: center;
 }
-.cards:after {
+#cards:after {
 	content: '';
 	display: block;
 	clear: both;

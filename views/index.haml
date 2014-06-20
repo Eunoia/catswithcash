@@ -28,7 +28,7 @@
 			Donations
 
 .col-md-10
-	.cards
+	#cards
 		- @cats.each do |cat|
 			.card{ cat[:data] }
 				%img.cat{src:cat[:img] ,height: cat[:height]}
