@@ -43,6 +43,7 @@
   <div id="cards">
     <% @cats.each do |cat| %>
       <div
+          data-donorid="<%= cat[:donorID] %>"
           data-donations="<%= cat[:donations] %>"
           data-networth="<%= cat[:networth] %>"
           data-legacy="<%= if cat[:legacy]
@@ -70,55 +71,11 @@
           <%= separate_comma(cat[:networth]) %>
         </p>
         <p class="actions">
-          <div class="btn btn-default glyphicon glyphicon-plane"
-            onclick="order_tickets<%=cat[:donorID] %>()" id="order_tickets">
-            <script>
-              function order_tickets<%=cat[:donorID] %>(){
-                alert("Your airplane to visit <%= cat[:name] %> is pulling up shortly")
-              }
-            </script>
-            <div class="hidden"><%=cat[:donorID] %></div>
-          </div>
-          <div  class="btn btn-default glyphicon glyphicon-phone-alt"
-                onclick="call_them<%=cat[:donorID] %>()"
-                id="call_them">
-            <script>
-              function call_them<%=cat[:donorID] %>(){
-                alert("Pick up your phone, <%= cat[:name] %> is calling.")
-              }
-            </script>
-            <div class="hidden"><%=cat[:donorID] %></div>
-          </div>
-          <div  class="btn btn-default glyphicon glyphicon-gift send_gift"
-                id="send_gift<%=cat[:donorID] %>">
-            <div class="hidden"><%=cat[:name] %></div>
-          </div>
-          <div  class="btn btn-default glyphicon glyphicon-send"
-                onclick="send_email<%=cat[:donorID] %>()"
-                id="send_email">
-            <script>
-              function send_email<%=cat[:donorID] %>(){
-                alert("Your perfectly worded email will be read by <%= cat[:name] %> shortly.")
-              }
-            </script>
-          </div>
-          <div  class="btn btn-default glyphicon glyphicon-cutlery buy_lunch"
-                onclick="buy_lunch<%=cat[:donorID] %>()" id="buy_lunch">
-            <script>
-              function buy_lunch<%=cat[:donorID] %>(){
-                $.ajax({
-                  url: "/work",
-                  type: "POST",
-                  data: { action: "buy_lunch", donor: "<%=cat[:donorID] %>" },
-                  async: false,
-                  success: function(response){
-                    alert(response)
-                  }
-                })
-              }
-            </script>
-            <div class="hidden"><%=cat[:donorID] %></div>
-          </div>
+          <div class="btn btn-default glyphicon glyphicon-plane order_tickets"></div>
+          <div  class="btn btn-default glyphicon glyphicon-phone-alt call_them"></div>
+          <div  class="btn btn-default glyphicon glyphicon-gift send_gift"></div>
+          <div  class="btn btn-default glyphicon glyphicon-send send_email"></div>
+          <div  class="btn btn-default glyphicon glyphicon-cutlery buy_lunch"></div>
         </p>
       </div>
     <% end %>
