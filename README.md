@@ -3,6 +3,7 @@ Cats with Cash
 
 Cats with cash is the dashboard to a CRM used by a philantropic fund raising group. 
 
+![Screenshot of Cats with Cats](http://i.imgur.com/m4P4jBa.png)
 
 It was hastely built, and there are javascript improvements that can be made. 
 
